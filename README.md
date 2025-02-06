@@ -46,7 +46,7 @@ The server will start on `http://localhost:3000/` by default
 ### Endpoint
 
 - Local development URL: `http://localhost:3000/api/classify-number`
-- Production URL: `https://hng-project2-classify-numbers-api.vercel.app/api/classify-number`
+- Production URL: `https://hngx-stage1-classify-number-api.vercel.app/api/classify-number`
 
 ### Request format
 
