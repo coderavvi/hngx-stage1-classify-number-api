@@ -26,7 +26,7 @@ app.get("/api/classify-number?:number", async (req, res) => {
 
   // user input validation
   if (!number || isNaN(number) || !Number.isInteger(number) || number==='') {
-    res.status(400).json({
+    return res.status(400).json({
       number: req.query.number,
       error: true,
     });
@@ -45,12 +45,11 @@ app.get("/api/classify-number?:number", async (req, res) => {
     numberProperties.push("odd"); // adds 'odd' to numberProperties array if true
   }
 
-  let funFact = "";
 
   // getting fun fact from the numbersapi
   try {
     const response = await axios.get(`http://numbersapi.com/${number}/math`);
-    funFact = response.data;
+    const funFact = response.data;
 
     const resData = {
     number: number,
