@@ -25,20 +25,13 @@ app.get("/api/classify-number?:number", async (req, res) => {
   const number = Number(req.query.number);
 
   // user input validation
-  if (!number || isNaN(number)) {
+  if (!number || isNaN(number) || !Number.isInteger(number)) {
     res.status(400).json({
       number: req.query.number,
       error: true,
     });
   }
 
-  // handling user input of non integers
-  if (!Number.isInteger(number)) {
-    res.status(400).json({
-      number: "float",
-      error: true,
-    });
-  }
 
   const numberProperties = [];
 
@@ -58,11 +51,8 @@ app.get("/api/classify-number?:number", async (req, res) => {
   try {
     const response = await axios.get(`http://numbersapi.com/${number}/math`);
     funFact = response.data;
-  } catch (error) {
-    res.json({ error: "failed to fetch fun fact" });
-  }
 
-  const resData = {
+    const resData = {
     number: number,
     is_prime: numberIsPrime(number),
     is_perfect: numberIsPerfect(number),
@@ -72,6 +62,12 @@ app.get("/api/classify-number?:number", async (req, res) => {
   };
 
   res.status(200).json(resData);
+    
+  } catch (error) {
+    res.json({ error: "failed to fetch fun fact" });
+  }
+
+
 });
 
 app.listen(PORT, () => {
