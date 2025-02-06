@@ -20,10 +20,11 @@ app.use(compression());
 
 // Define the get route for the API
 app.get("/api/classify-number?:number", async (req, res) => {
-  const number = Number(req.query.number);
+  const number = req.query.number;
+
 
   // user input validation
-  if (number  =="" || isNaN(number) || !Number.isInteger(number)) {
+  if (number == "" || isNaN(Number(number)) || !Number.isInteger(Number(number))) {
     return res.status(400).json({
       number: req.query.number,
       error: true,
