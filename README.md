@@ -18,13 +18,13 @@ To run this API on your local device, make sure the following are installed
 - clone the repository
 
 ```bash
-git clone https://github.com/coderavvi/hng_project2_classify_numbers_api.git
+git clone https://github.com/coderavvi/hngx-stage1-classify-number-api.git
 ```
 
 - Navigate to the directory
 
 ```bash
-cd hng_project2_classify_numbers_api
+cd hngx_stage1-classify-api
 ```
 
 - Install dependencies
